@@ -79,4 +79,26 @@ public class Librarian {
             +" \n Price : "+i.getPrice());
         }
     }
+    public void viewReservations()
+    {
+        int number=0;
+        TypedQuery<Reservations> query=this.objectDB.entityManager.createQuery("SELECT r FROM Reservations r ",Reservations.class);
+        List<Reservations> results=query.getResultList();
+        for(Reservations r : results)
+        {
+            number++;
+            System.out.println("Reservation "+ number);
+            System.out.println("Item title : "+r.getItem().getTitle()
+                    +" \n Reserve Date : "+r.getReserveDate()
+                    +" \n Duration : "+r.getDuration()
+                    +" \n Fees : "+r.getFees()
+                    +" \n Member : "+r.getMember().getFirstName() + " " +r.getMember().getLastName());
+        }
+    }
+    public List<Items> getItems()
+    {
+        TypedQuery<Items> query=this.objectDB.entityManager.createQuery("SELECT i FROM Items i",Items.class);
+        List<Items> results=query.getResultList();
+        return results;
+    }
 }

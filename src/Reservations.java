@@ -1,7 +1,4 @@
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Reservations {
@@ -15,10 +12,10 @@ public class Reservations {
     private Items item;
     //private int ISBN;
     //private int userID;
-    @OneToMany
+    @ManyToOne
     private Member member;
 //    private int adminID;
-    @OneToMany
+    @ManyToOne
     private Librarian librarian;
 
     public Reservations() {
@@ -33,5 +30,37 @@ public class Reservations {
         this.item = item;
         this.member = member;
         this.librarian = librarian;
+    }
+
+    public int getReservationNo() {
+        return reservationNo;
+    }
+
+    public int getReserveDate() {
+        return reserveDate;
+    }
+
+    public int getReturnDate() {
+        return returnDate;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public double getFees() {
+        return fees;
+    }
+
+    public Items getItem() {
+        return item;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public Librarian getLibrarian() {
+        return librarian;
     }
 }

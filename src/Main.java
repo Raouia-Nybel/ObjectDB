@@ -18,18 +18,22 @@ public class Main {
         objectDB.entityManager.getTransaction().begin();
 
             //authSys=new AuthentificationSystem(45,"ADMIN4545");
-            librarian=new Librarian(85,"ADMIN8585","Eniko","Hanak","3529 Miskolc",7852);
+            librarian=new Librarian(58,"ADMIN5858","Bjorn","Lothbrook","1458 Kattegat",6325);
             objectDB.entityManager.persist(librarian);
            // librarian.connectObjectDB(objectDB);
 
-            member=new Member(42,"najib42080814","3527 Miskolc","Najib","Ajir",4523,"Student");
+            member=new Member(62,"ShieldWarGun1452","1423 Homeland","Gunhild","Lagertha",4522,"Teacher");
             librarian.addMember(member);
-
+            member.viewItems();
+            /*
             librarian.viewItems();
             librarian.viewMembers();
-            member.viewItems();
 
+            */
+        Reservations reservation=new Reservations(1,80321,280321,20,0,librarian.getItems().get(0),member,librarian);
+        member.reserveItem(reservation);
 
+        librarian.viewReservations();
 
 
         objectDB.entityManager.getTransaction().commit();

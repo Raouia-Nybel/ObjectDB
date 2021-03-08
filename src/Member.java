@@ -47,6 +47,10 @@ public class Member {
                     +" \n Price : "+i.getPrice());
         }
     }
+    public void reserveItem(Reservations reservation)
+    {
+        objectDB.entityManager.persist(reservation);
+    }
 
     public int getUserID() {
         return userID;
